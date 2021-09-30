@@ -1,4 +1,10 @@
 package co.com.sofka.personalizedtraining.domain.grupo.values;
 
-public class Instrucciones {
+import co.com.sofka.domain.generic.ValueObject;
+
+public class Instrucciones implements ValueObject<String> {
+    @Override
+    public String value() {
+        return null;
+    }
 }

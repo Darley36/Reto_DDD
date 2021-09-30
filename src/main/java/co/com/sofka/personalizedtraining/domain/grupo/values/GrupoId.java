@@ -1,4 +1,6 @@
 package co.com.sofka.personalizedtraining.domain.grupo.values;
 
-public class GrupoId {
+import co.com.sofka.domain.generic.Identity;
+
+public class GrupoId extends Identity {
 }

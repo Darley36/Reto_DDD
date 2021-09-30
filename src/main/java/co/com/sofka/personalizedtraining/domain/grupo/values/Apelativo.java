@@ -1,4 +1,10 @@
 package co.com.sofka.personalizedtraining.domain.grupo.values;
 
-public class Apelativo {
+import co.com.sofka.domain.generic.ValueObject;
+
+public class Apelativo implements ValueObject<String> {
+    @Override
+    public String value() {
+        return null;
+    }
 }

@@ -1,4 +1,10 @@
 package co.com.sofka.personalizedtraining.domain.grupo.values;
 
-public class Cantidad {
+import co.com.sofka.domain.generic.ValueObject;
+
+public class Cantidad implements ValueObject<Integer> {
+    @Override
+    public Integer value() {
+        return null;
+    }
 }

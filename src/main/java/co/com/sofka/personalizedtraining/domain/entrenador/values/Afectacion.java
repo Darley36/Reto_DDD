@@ -1,4 +1,10 @@
 package co.com.sofka.personalizedtraining.domain.entrenador.values;
 
-public class Afectacion {
+import co.com.sofka.domain.generic.ValueObject;
+
+public class Afectacion implements ValueObject<String> {
+    @Override
+    public String value() {
+        return null;
+    }
 }

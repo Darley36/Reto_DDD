@@ -1,4 +1,10 @@
 package co.com.sofka.personalizedtraining.domain.grupo.values;
 
-public class Material {
+import co.com.sofka.domain.generic.ValueObject;
+
+public class Material implements ValueObject<String> {
+    @Override
+    public String value() {
+        return null;
+    }
 }
