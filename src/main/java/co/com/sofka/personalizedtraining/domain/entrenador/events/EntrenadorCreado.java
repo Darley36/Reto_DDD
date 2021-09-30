@@ -9,7 +9,7 @@ public class EntrenadorCreado extends DomainEvent {
     private final Email email;
 
     public EntrenadorCreado(Nombre nombre, Email email) {
-        super("sofka.entrenador,entrenadorcreado");
+        super("sofka.entrenador.entrenadorcreado");
         this.nombre = nombre;
         this.email = email;
     }
