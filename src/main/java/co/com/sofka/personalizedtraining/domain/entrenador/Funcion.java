@@ -3,11 +3,13 @@ package co.com.sofka.personalizedtraining.domain.entrenador;
 import co.com.sofka.domain.generic.Entity;
 import co.com.sofka.personalizedtraining.domain.entrenador.values.*;
 
+import java.util.Objects;
+
 public class Funcion extends Entity<FuncionId> {
-    private final Nombre nombre;
-    private final Capacidad capacidad;
-    private final Experiencia experiencia;
-    private final Descripcion descripcion;
+    private Nombre nombre;
+    private Capacidad capacidad;
+    private Experiencia experiencia;
+    private Descripcion descripcion;
 
     public Funcion(FuncionId entityId, Nombre nombre, Capacidad capacidad, Experiencia experiencia, Descripcion descripcion) {
         super(entityId);
@@ -15,6 +17,22 @@ public class Funcion extends Entity<FuncionId> {
         this.capacidad = capacidad;
         this.experiencia = experiencia;
         this.descripcion = descripcion;
+    }
+
+    public void actualizarNombre(Nombre nombre){
+        this.nombre = Objects.requireNonNull(nombre);
+    }
+
+    public void actualizarCapacidad(Capacidad capacidad){
+        this.capacidad = Objects.requireNonNull(capacidad);
+    }
+
+    public void actualizarExperiencia(Experiencia experiencia){
+        this.experiencia = Objects.requireNonNull(experiencia);
+    }
+
+    public void actualizarDescripcion(Descripcion descripcion){
+        this.descripcion = Objects.requireNonNull(descripcion);
     }
 
     public Nombre nombre() {

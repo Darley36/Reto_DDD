@@ -3,11 +3,13 @@ package co.com.sofka.personalizedtraining.domain.grupo;
 import co.com.sofka.domain.generic.Entity;
 import co.com.sofka.personalizedtraining.domain.grupo.values.*;
 
+import java.util.Objects;
+
 public class Miembro extends Entity<MiembroId> {
-    private final Nombre nombre;
-    private final Email email;
-    private final Residencia residencia;
-    private final DatosFisicos datosFisicos;
+    private Nombre nombre;
+    private Email email;
+    private Residencia residencia;
+    private DatosFisicos datosFisicos;
 
     public Miembro(MiembroId entityId, Nombre nombre, Email email, Residencia residencia, DatosFisicos datosFisicos) {
         super(entityId);
@@ -15,6 +17,22 @@ public class Miembro extends Entity<MiembroId> {
         this.email = email;
         this.residencia = residencia;
         this.datosFisicos = datosFisicos;
+    }
+
+    public void actualizarNombre(Nombre nombre){
+        this.nombre = Objects.requireNonNull(nombre);
+    }
+
+    public void actualizarEmail(Email email){
+        this.email = Objects.requireNonNull(email);
+    }
+
+    public void actualizarResidencia(Residencia residencia){
+        this.residencia = Objects.requireNonNull(residencia);
+    }
+
+    public void actualizarDatosFisicos(DatosFisicos datosFisicos){
+        this.datosFisicos = Objects.requireNonNull(datosFisicos);
     }
 
     public Nombre nombre() {

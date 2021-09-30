@@ -1,6 +1,7 @@
 package co.com.sofka.personalizedtraining.domain.grupo;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.personalizedtraining.domain.grupo.events.GrupoCreado;
 import co.com.sofka.personalizedtraining.domain.grupo.values.Apelativo;
 import co.com.sofka.personalizedtraining.domain.grupo.values.GrupoId;
 
@@ -14,5 +15,6 @@ public class Grupo extends AggregateEvent<GrupoId> {
 
     public Grupo(GrupoId entityId, Apelativo apelativo) {
         super(entityId);
+        appendChange(new GrupoCreado(apelativo)).apply();
     }
 }
