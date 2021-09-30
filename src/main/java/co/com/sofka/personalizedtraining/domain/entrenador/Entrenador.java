@@ -1,9 +1,11 @@
 package co.com.sofka.personalizedtraining.domain.entrenador;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.personalizedtraining.domain.entrenador.events.*;
 import co.com.sofka.personalizedtraining.domain.entrenador.values.*;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
@@ -18,6 +20,17 @@ public class Entrenador extends AggregateEvent<EntrenadorId> {
     public Entrenador(EntrenadorId entityId, Nombre nombre, Email email) {
         super(entityId);
         appendChange(new EntrenadorCreado(nombre,email)).apply();
+    }
+
+    private Entrenador(EntrenadorId entityId){
+        super(entityId);
+        subscribe(new EntrenadorChange(this));
+    }
+
+    public static Entrenador from(EntrenadorId entrenadorId, List<DomainEvent> events){
+        var entrenador = new Entrenador(entrenadorId);
+        events.forEach(entrenador::applyEvent);
+        return entrenador;
     }
 
     public void agregarFuncion(FuncionId entityId, Nombre nombre, Capacidad capacidad, Experiencia experiencia, Descripcion descripcion){
@@ -69,7 +82,7 @@ public class Entrenador extends AggregateEvent<EntrenadorId> {
         appendChange(new DescripcionFuncionActualizada(entityId,descripcion)).apply();
     }
 
-    public Optional<Funcion> getFuncionPorId(FuncionId funcionId){
+    protected Optional<Funcion> getFuncionPorId(FuncionId funcionId){
         return funciones()
                 .stream()
                 .filter(funcion -> funcion.identity().equals(entityId))

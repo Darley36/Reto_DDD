@@ -1,10 +1,12 @@
 package co.com.sofka.personalizedtraining.domain.grupo;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.personalizedtraining.domain.entrenador.values.EntrenadorId;
 import co.com.sofka.personalizedtraining.domain.grupo.events.*;
 import co.com.sofka.personalizedtraining.domain.grupo.values.*;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -18,6 +20,17 @@ public class Grupo extends AggregateEvent<GrupoId> {
     public Grupo(GrupoId entityId, Apelativo apelativo) {
         super(entityId);
         appendChange(new GrupoCreado(apelativo)).apply();
+    }
+
+    private Grupo(GrupoId entityId){
+        super(entityId);
+        subscribe(new GrupoChange(this));
+    }
+
+    public static Grupo from(GrupoId grupoId, List<DomainEvent> events){
+        var grupo = new Grupo(grupoId);
+        events.forEach(grupo::applyEvent);
+        return grupo;
     }
 
     public void cambiarApelativo(Apelativo apelativo){
