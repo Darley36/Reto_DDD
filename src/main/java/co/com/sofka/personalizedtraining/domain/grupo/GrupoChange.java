@@ -3,11 +3,15 @@ package co.com.sofka.personalizedtraining.domain.grupo;
 import co.com.sofka.domain.generic.EventChange;
 import co.com.sofka.personalizedtraining.domain.grupo.events.*;
 
+import java.util.HashSet;
+
 public class GrupoChange extends EventChange {
     public GrupoChange(Grupo grupo) {
 
         apply((GrupoCreado event) -> {
             grupo.apelativo = event.getApelativo();
+            grupo.miembros = new HashSet<>();
+            grupo.retos = new HashSet<>();
         });
 
         apply((ApelativoCambiado event) -> {
