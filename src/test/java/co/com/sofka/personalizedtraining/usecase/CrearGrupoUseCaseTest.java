@@ -14,8 +14,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class CrearGrupoUseCaseTest {
 
     @Test
-    void crearGrupoEscenarioDefecto(){
-
+    void crearGrupoEscenarioNormal(){
+        //arrange
         var command = new CrearGrupo(
                 GrupoId.of("xxxxx"),
                 new Apelativo("Grupo de baloncesto")
@@ -24,20 +24,42 @@ class CrearGrupoUseCaseTest {
         var useCase = new CrearGrupoUseCase();
 
 
-
+        //act
         var events = UseCaseHandler.getInstance()
                 .syncExecutor(useCase, new RequestCommand<>(command))
                 .orElseThrow()
                 .getDomainEvents();
 
-
+        //assert
+        Assertions.assertEquals(1,events.size());
         var event = (GrupoCreado)events.get(0);
+
         Assertions.assertEquals("Grupo de baloncesto",event.getApelativo().value());
+
+
     }
 
     @Test
-    void crearGrupoEscenarioNormal(){
+    void crearGrupoEscenarioDefecto(){
+        var command = new CrearGrupo(
+                GrupoId.of("xxxxx"),
+                new Apelativo("Grupo")
+        );
 
+        var useCase = new CrearGrupoUseCase();
+
+
+        //act
+        var events = UseCaseHandler.getInstance()
+                .syncExecutor(useCase, new RequestCommand<>(command))
+                .orElseThrow()
+                .getDomainEvents();
+
+        //assert
+        Assertions.assertEquals(1,events.size());
+        var event = (GrupoCreado)events.get(0);
+
+        Assertions.assertEquals("ApelativoDefecto",event.getApelativo().value());
     }
 
 }

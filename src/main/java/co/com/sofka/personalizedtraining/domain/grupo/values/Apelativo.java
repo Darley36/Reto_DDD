@@ -13,10 +13,6 @@ public class Apelativo implements ValueObject<String> {
             throw new IllegalArgumentException("el apelativo no puede estar vacia");
         }
 
-        if(this.value.length() < 10){
-            throw new IllegalArgumentException("debe ser mayor a 10 caracteres");
-        }
-
         if(this.value.length() > 100){
             throw new IllegalArgumentException("debe ser menor a 100 caracteres");
         }

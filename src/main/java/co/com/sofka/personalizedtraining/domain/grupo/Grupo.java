@@ -68,4 +68,8 @@ public class Grupo extends AggregateEvent<GrupoId> {
         Objects.requireNonNull(estado);
         appendChange(new RetoAgregado(entityId,descripcion,duracion,fechaEjecucion,dificultad,estado)).apply();
     }
+
+    public void enviarAlerta(String mensaje) {
+        appendChange(new MensajeEnviado(mensaje)).apply();
+    }
 }
