@@ -4,14 +4,11 @@ import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.domain.generic.DomainEvent;
-import co.com.sofka.personalizedtraining.domain.grupo.commands.agregarMiembro;
 import co.com.sofka.personalizedtraining.domain.grupo.commands.agregarReto;
 import co.com.sofka.personalizedtraining.domain.grupo.events.GrupoCreado;
-import co.com.sofka.personalizedtraining.domain.grupo.events.MiembroAgregado;
 import co.com.sofka.personalizedtraining.domain.grupo.events.RetoAgregado;
 import co.com.sofka.personalizedtraining.domain.grupo.values.*;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -20,25 +17,19 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class AgregarRetoUseCaseTest {
 
-    private AgregarRetoUseCase agregarRetoUseCase;
     @Mock
     private DomainEventRepository repository;
-    @BeforeEach
-    public void setup(){
-        agregarRetoUseCase = new AgregarRetoUseCase();
-        repository = mock(DomainEventRepository.class);
-        agregarRetoUseCase.addRepository(repository);
-    }
+
     @Test
-    void AgregarRetoGrupo(){
+    void AgregarMiembroGrupo(){
         //Arrange
+        var useCase = new AgregarRetoUseCase();
+
         var command = new agregarReto(
                 GrupoId.of("1"),
                 new RetoId("xxx"),
@@ -49,15 +40,15 @@ class AgregarRetoUseCaseTest {
                 new Estado("este es el estado")
         );
 
-        when(repository.getEventsBy("1")).thenReturn(events());
+        Mockito.when(repository.getEventsBy("xxx")).thenReturn(evenStored());
+        useCase.addRepository(repository);
 
         //act
-        var response = UseCaseHandler
-                .getInstance()
-                .setIdentifyExecutor("1")
-                .syncExecutor(agregarRetoUseCase, new RequestCommand<>(command))
-                .orElseThrow();
-        var events = response.getDomainEvents();
+        var events = UseCaseHandler.getInstance()
+                .setIdentifyExecutor("xxx")
+                .syncExecutor(useCase,new RequestCommand<>(command))
+                .orElseThrow()
+                .getDomainEvents();
 
         //assert
         var retoAgregado = (RetoAgregado) events.get(0);
@@ -69,10 +60,12 @@ class AgregarRetoUseCaseTest {
         Assertions.assertEquals("este es el estado",retoAgregado.getEstado().value());
     }
 
-    private List<DomainEvent> events() {
+    private List<DomainEvent> evenStored() {
         return List.of(
                 new GrupoCreado(
                         new Apelativo("Grupo de natacion"))
         );
     }
+
+
 }

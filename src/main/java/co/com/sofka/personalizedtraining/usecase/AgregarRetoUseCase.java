@@ -10,7 +10,7 @@ public class AgregarRetoUseCase extends UseCase<RequestCommand<agregarReto>, Res
     @Override
     public void executeUseCase(RequestCommand<agregarReto> agregarRetoRequestCommand) {
         var command = agregarRetoRequestCommand.getCommand();
-        var grupo = Grupo.from(command.getGrupoId(),retrieveEvents(command.getGrupoId().value()));
+        var grupo = Grupo.from(command.getGrupoId(),retrieveEvents());
         grupo.agregarReto(
                 command.getEntityId(),
                 command.getDescripcion(),
