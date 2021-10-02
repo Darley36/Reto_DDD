@@ -9,6 +9,7 @@ import co.com.sofka.personalizedtraining.domain.grupo.events.ApelativoCambiado;
 import co.com.sofka.personalizedtraining.domain.grupo.events.GrupoCreado;
 import co.com.sofka.personalizedtraining.domain.grupo.values.Apelativo;
 import co.com.sofka.personalizedtraining.domain.grupo.values.GrupoId;
+import co.com.sofka.personalizedtraining.usecase.grupo.CambiarApelativoUseCase;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;

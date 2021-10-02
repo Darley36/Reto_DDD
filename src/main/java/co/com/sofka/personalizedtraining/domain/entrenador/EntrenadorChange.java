@@ -3,12 +3,17 @@ package co.com.sofka.personalizedtraining.domain.entrenador;
 import co.com.sofka.domain.generic.EventChange;
 import co.com.sofka.personalizedtraining.domain.entrenador.events.*;
 
+import java.util.HashSet;
+
 public class EntrenadorChange extends EventChange {
     public EntrenadorChange(Entrenador entrenador) {
 
         apply((EntrenadorCreado event) -> {
             entrenador.nombre = event.getNombre();
             entrenador.email = event.getEmail();
+            entrenador.conocimientos = new HashSet<>();
+            entrenador.funciones = new HashSet<>();
+            entrenador.rutinas = new HashSet<>();
         });
 
         apply((NombreCambiado event) -> {

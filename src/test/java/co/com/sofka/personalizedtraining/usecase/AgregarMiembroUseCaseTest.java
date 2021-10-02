@@ -1,6 +1,5 @@
 package co.com.sofka.personalizedtraining.usecase;
 
-import co.com.sofka.business.generic.UseCase;
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.RequestCommand;
@@ -9,17 +8,16 @@ import co.com.sofka.personalizedtraining.domain.grupo.commands.agregarMiembro;
 import co.com.sofka.personalizedtraining.domain.grupo.events.GrupoCreado;
 import co.com.sofka.personalizedtraining.domain.grupo.events.MiembroAgregado;
 import co.com.sofka.personalizedtraining.domain.grupo.values.*;
+import co.com.sofka.personalizedtraining.usecase.grupo.AgregarMiembroUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 

@@ -6,10 +6,9 @@ import co.com.sofka.personalizedtraining.domain.grupo.commands.CrearGrupo;
 import co.com.sofka.personalizedtraining.domain.grupo.events.GrupoCreado;
 import co.com.sofka.personalizedtraining.domain.grupo.values.Apelativo;
 import co.com.sofka.personalizedtraining.domain.grupo.values.GrupoId;
+import co.com.sofka.personalizedtraining.usecase.grupo.CrearGrupoUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CrearGrupoUseCaseTest {
 

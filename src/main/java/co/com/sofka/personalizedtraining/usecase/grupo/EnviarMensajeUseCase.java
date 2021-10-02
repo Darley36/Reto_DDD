@@ -1,4 +1,4 @@
-package co.com.sofka.personalizedtraining.usecase;
+package co.com.sofka.personalizedtraining.usecase.grupo;
 
 import co.com.sofka.business.generic.BusinessException;
 import co.com.sofka.business.generic.UseCase;

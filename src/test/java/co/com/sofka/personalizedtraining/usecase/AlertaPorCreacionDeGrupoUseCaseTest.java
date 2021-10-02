@@ -7,17 +7,15 @@ import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.personalizedtraining.domain.grupo.events.GrupoCreado;
 import co.com.sofka.personalizedtraining.domain.grupo.events.MensajeEnviado;
 import co.com.sofka.personalizedtraining.domain.grupo.values.Apelativo;
+import co.com.sofka.personalizedtraining.usecase.grupo.AlertaPorCreacionDeGrupoUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class AlertaPorCreacionDeGrupoUseCaseTest {

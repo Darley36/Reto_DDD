@@ -8,6 +8,7 @@ import co.com.sofka.personalizedtraining.domain.grupo.commands.agregarReto;
 import co.com.sofka.personalizedtraining.domain.grupo.events.GrupoCreado;
 import co.com.sofka.personalizedtraining.domain.grupo.events.RetoAgregado;
 import co.com.sofka.personalizedtraining.domain.grupo.values.*;
+import co.com.sofka.personalizedtraining.usecase.grupo.AgregarRetoUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,8 +17,6 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class AgregarRetoUseCaseTest {
